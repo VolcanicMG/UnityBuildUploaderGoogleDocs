@@ -13,7 +13,7 @@ namespace GoogleUploader
         private readonly string PathToServiceAccountKeyFile = Application.StartupPath + @""; //Change to the path of your google account key (Needs to be save locally)
         private const string ServiceAccountEmail = "";
         private readonly string UploadFileName = Application.StartupPath + @"GameBuild.Apk";
-        private const string DirectoryID = ""; //Change to your google directory
+        private const string DirectoryID = ""; //Change to your google directory where you want the file to upload too
 
         private string buildNumber = "";
         private bool stopped;
@@ -147,7 +147,7 @@ namespace GoogleUploader
                 var fileMetaData = new Google.Apis.Drive.v3.Data.File()
                 {
                     Name = $"GameBuildAPK({buildNumber}).apk", //At some point lead over to the build file and apend the build numbers
-                    Parents = new List<string>() { "1mq6su5APiPAf9bxCBSFuu5sVdmVPsNmJ" },
+                    Parents = new List<string>() { DirectoryID },
                 };
 
                 string uploadedFileID;
